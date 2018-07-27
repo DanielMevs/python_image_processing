@@ -48,11 +48,20 @@ def slice_sum(lst, b, e):
 
 memo={}
 def slice_sum_m(lst, b, e):
-    if b == e:
-        memo[(lst,b,e)]= lst[b]
-        return lst[b]
-    else:
-        return slice_sum(lst, b+1, e) + lst[b]
+    try:
+        return memo[(b,e)]
+    except: 
+        if b == e:
+            memo[(b,e)] = lst[b]
+            return memo[(b,e)]
+        else:
+            memo[(b,e)]= slice_sum_m(lst, b+1, e) + lst[b]
+            return memo[(b,e)]
+        
 
 
-binary_tree(160, 5)
+#binary_tree(160, 5)
+ls = [3,4,5,6,7,4,9,33]
+slice_sum_m(ls,2,6)
+print(memo)
+        
