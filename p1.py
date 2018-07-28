@@ -53,7 +53,7 @@ def power(x, n):
     else:
         return power(x, n/2) ** 2
     
-test_power():
+def test_power():
     print("Power function of 7 to the 4th power: ", power(7,4))
     print("7 to the 4th power using ** operator: ", 7 ** 4)
 
@@ -67,7 +67,7 @@ def test_slice_sum():
     ls = [3,4,5,6,7,4,9,33]
     testif(slice_sum(ls,4,6),'PASS','FAIL')
     testif(slice_sum(ls,3,6),'PASS','FAIL')
-    testif(slice_sum(ls,5,3),'PASS','FAIL')
+   
 
 memo={}
 def slice_sum_m(lst, b, e):
@@ -84,12 +84,12 @@ def test_slice_sum_m():
     ls = [3,4,5,6,7,4,9,33]
     testif(slice_sum_m(ls,4,6),'PASS','FAIL')
     testif(slice_sum_m(ls,3,6),'PASS','FAIL')
-    testif(slice_sum_m(ls,5,3),'PASS','FAIL')
+
 
     
         
 
-
+binary_tree(160, 5)
 
 ls = [3,4,5,6,7,4,9,33]
 slice_sum_m(ls,2,6)

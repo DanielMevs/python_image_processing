@@ -18,9 +18,13 @@ class PrimeSeq:
 
     def __iter__(self):
         return self
-    
-primeseq = PrimeSeq(100)
-for p in primeseq:
-    print(p)
-primes_lst = [p for p in PrimeSeq(100)] # uses the new object to get an iterator
-print(primes_lst)
+
+def main(): 
+    primeseq = PrimeSeq(100)
+    for p in primeseq:
+        print(p)
+    primes_lst = [p for p in PrimeSeq(100)] # uses the new object to get an iterator
+    print(primes_lst)
+
+main()
+

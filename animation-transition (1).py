@@ -6,21 +6,14 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import sys
 
-def convert_bw(matrix):#takes an image ndarry with shape (height, width, 3), dtype
-    m=matrix
-    m = (m[:,:,0]+m[:,:,1]+m[:,:,2])/3
-    return np.dstack((m,m,m))
-
 def image_load(filename):
     return plt.imread(filename)
 
 
-def image_gen(file1, steps=30):
+def image_gen(file1, file2, steps=30):
     """Generator for image arrays."""
     img1 = image_load(file1)     # load the two image files into ndarrays
-    print(img1)
-    img2 = convert_bw(img1)
-    print(img2)
+    img2 = image_load(file2)
     if img1.shape != img2.shape:
         print("Error: the two images have different shapes.", file=sys.stderr)
         exit(2)
@@ -38,14 +31,10 @@ def image_gen(file1, steps=30):
             
 fig = plt.figure()
 # create image plot and indicate this is animated. Start with an image.
-im = plt.imshow(image_load("download.jpg"), interpolation='none', animated=True)
+im = plt.imshow(image_load("florida-keys-800-480.jpg"), interpolation='none', animated=True)
 
 # the two images must have the same shape:
-<<<<<<< HEAD
-imggen = image_gen("download.jpg", "something.jpg", steps=30)
-=======
-imggen = image_gen("florida-keys-800-480.jpg", steps=30)
->>>>>>> 720e0b7c50482e1c73f78ad6795789401fb4c38f
+imggen = image_gen("florida-keys-800-480.jpg", "Grand_Teton-800-480.jpg", steps=30)
 
 # updatefig is called for each frame, each update interval:
 def updatefig(*args):
