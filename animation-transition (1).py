@@ -31,10 +31,10 @@ def image_gen(file1, file2, steps=30):
             
 fig = plt.figure()
 # create image plot and indicate this is animated. Start with an image.
-im = plt.imshow(image_load("download.jpg"), interpolation='none', animated=True)
+im = plt.imshow(image_load("florida-keys-800-480.jpg"), interpolation='none', animated=True)
 
 # the two images must have the same shape:
-imggen = image_gen("download.jpg", "something.jpg", steps=30)
+imggen = image_gen("florida-keys-800-480.jpg", "Grand_Teton-800-480.jpg", steps=30)
 
 # updatefig is called for each frame, each update interval:
 def updatefig(*args):
