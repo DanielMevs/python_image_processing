@@ -7,9 +7,9 @@ import matplotlib.animation as animation
 import sys
 
 def convert_bw(matrix):#takes an image ndarry with shape (height, width, 3), dtype
-    total = matrix[:,:,0] + matrix[:,:,1] + matrix[:,:,2]
-    total = total/3
-    return np.fromfunction(lambda x,y,z: total[x,y] , matrix.shape(), dtype=np.uint8 )
+    m=matrix
+    m = (m[:,:,0]+m[:,:,1]+m[:,:,2])/3
+    return np.dstack((m,m,m))
 
 def image_load(filename):
     return plt.imread(filename)
@@ -18,7 +18,9 @@ def image_load(filename):
 def image_gen(file1, steps=30):
     """Generator for image arrays."""
     img1 = image_load(file1)     # load the two image files into ndarrays
+    print(img1)
     img2 = convert_bw(img1)
+    print(img2)
     if img1.shape != img2.shape:
         print("Error: the two images have different shapes.", file=sys.stderr)
         exit(2)
