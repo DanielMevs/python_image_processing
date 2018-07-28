@@ -6,14 +6,19 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import sys
 
+def convert_bw(matrix):#takes an image ndarry with shape (height, width, 3), dtype
+    total = matrix[:,:,0] + matrix[:,:,1] + matrix[:,:,2]
+    total = total/3
+    return np.fromfunction(lambda x,y,z: total[x,y] , matrix.shape(), dtype=np.uint8 )
+
 def image_load(filename):
     return plt.imread(filename)
 
 
-def image_gen(file1, file2, steps=30):
+def image_gen(file1, steps=30):
     """Generator for image arrays."""
     img1 = image_load(file1)     # load the two image files into ndarrays
-    img2 = image_load(file2)
+    img2 = convert_bw(img1)
     if img1.shape != img2.shape:
         print("Error: the two images have different shapes.", file=sys.stderr)
         exit(2)
@@ -34,7 +39,11 @@ fig = plt.figure()
 im = plt.imshow(image_load("download.jpg"), interpolation='none', animated=True)
 
 # the two images must have the same shape:
+<<<<<<< HEAD
 imggen = image_gen("download.jpg", "something.jpg", steps=30)
+=======
+imggen = image_gen("florida-keys-800-480.jpg", steps=30)
+>>>>>>> 720e0b7c50482e1c73f78ad6795789401fb4c38f
 
 # updatefig is called for each frame, each update interval:
 def updatefig(*args):
